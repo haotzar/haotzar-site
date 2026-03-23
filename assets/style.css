@@ -21,7 +21,7 @@
 /* Font Face */
 @font-face {
   font-family: 'DrugulinCLM-Bold';
-  src: url('./assets/fonts/DrugulinCLM-Bold.otf') format('opentype');
+  src: url('/assets/fonts/DrugulinCLM-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -651,7 +651,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('./art/home-background.png');
+  background-image: url('/art/home-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1350,7 +1350,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('./art/home-background.png');
+  background-image: url('/art/home-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
