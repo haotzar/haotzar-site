@@ -210,6 +210,12 @@ function handleButtonClick(event, button) {
   createRipple(event, button);
   
   // Handle specific button actions
+  const buttonAction = button.getAttribute('data-action');
+  if (buttonAction === 'get-started') {
+    window.open('https://haotzar.netlify.app/', '_blank', 'noopener');
+    return;
+  }
+
   const buttonText = button.textContent.trim().toLowerCase();
   
   switch(buttonText) {
