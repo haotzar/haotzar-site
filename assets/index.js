@@ -542,36 +542,42 @@ function updateDownloadButtons(platform) {
   // Platform configurations
   const platforms = {
     windows: {
+      id: 'windows',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/windows.svg',
       text: 'download.windows',
       textFallback: 'הורד לווינדוס',
       url: '#download-windows'
     },
     android: {
+      id: 'android',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/android.svg',
       text: 'download.android',
       textFallback: 'הורד לאנדרואיד',
       url: '#download-android'
     },
     ios: {
+      id: 'ios',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg',
       text: 'download.ios',
       textFallback: 'הורד ל-iOS',
       url: '#download-ios'
     },
     mac: {
+      id: 'mac',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg',
       text: 'download.mac',
       textFallback: 'הורד ל-Mac',
       url: '#download-mac'
     },
     linux: {
+      id: 'linux',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linux.svg',
       text: 'download.linux',
       textFallback: 'הורד ל-Linux',
       url: '#download-linux'
     },
     web: {
+      id: 'web',
       icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlechrome.svg',
       text: 'download.web',
       textFallback: 'לאתר האוצר',
@@ -681,14 +687,107 @@ function handleDownloadClick(platformConfig) {
   const platform = platformConfig.textFallback;
   showNotification(`מתחיל הורדה עבור ${platform}...`, 'info');
   
-  // Here you would add actual download logic
-  // For now, just log and show notification
   console.log('Download initiated for:', platformConfig);
-  
-  // Simulate download
-  setTimeout(() => {
-    showNotification(`ההורדה עבור ${platform} החלה בהצלחה!`, 'success');
-  }, 1000);
+
+  const platformId = platformConfig.id;
+  if (platformId === 'windows') {
+    downloadLatestWindowsFromGitHub().catch(err => {
+      console.error('Windows download failed:', err);
+      showNotification('לא הצלחנו להתחיל את ההורדה. פותח דף ריליסים...', 'warning');
+      window.open('https://github.com/haotzar/haotzar/releases', '_blank', 'noopener');
+    });
+    return;
+  }
+
+  if (platformId === 'web') {
+    window.open(platformConfig.url, '_blank', 'noopener');
+    showNotification(`נפתח קישור עבור ${platform}`, 'success');
+    return;
+  }
+
+  window.open('https://github.com/haotzar/haotzar/releases', '_blank', 'noopener');
+  showNotification(`פתחתי את דף הריליסים עבור ${platform}`, 'success');
+}
+
+async function downloadLatestWindowsFromGitHub() {
+  const cached = getCachedLatestWindowsAssetUrl();
+  if (cached) {
+    window.location.assign(cached);
+    showNotification('ההורדה החלה...', 'success');
+    return;
+  }
+
+  const apiUrl = 'https://api.github.com/repos/haotzar/haotzar/releases/latest';
+  const response = await fetch(apiUrl, {
+    headers: {
+      'Accept': 'application/vnd.github+json'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`GitHub API error: ${response.status}`);
+  }
+
+  const release = await response.json();
+  const assets = Array.isArray(release.assets) ? release.assets : [];
+  const url = pickWindowsAssetUrlFromReleaseAssets(assets);
+  if (!url) {
+    throw new Error('No matching Windows asset found in latest release');
+  }
+
+  cacheLatestWindowsAssetUrl(url);
+  window.location.assign(url);
+  showNotification('ההורדה החלה...', 'success');
+}
+
+function pickWindowsAssetUrlFromReleaseAssets(assets) {
+  const normalized = assets
+    .filter(a => a && typeof a.name === 'string' && typeof a.browser_download_url === 'string')
+    .map(a => ({ name: a.name, url: a.browser_download_url }));
+
+  const isHaotzarX64Setup = (name) => /^haotzar[-_].*_x64-setup\.exe$/i.test(name);
+  const isWindowsName = (name) => /windows|win32|win64|win-x64|win-x86/i.test(name);
+  const isPreferredExt = (name) => /\.(msi|exe)$/i.test(name);
+  const isAcceptableExt = (name) => /\.(msi|exe|zip)$/i.test(name);
+
+  const exact = normalized.find(a => isHaotzarX64Setup(a.name));
+  if (exact) return exact.url;
+
+  const preferred = normalized.find(a => isWindowsName(a.name) && isPreferredExt(a.name));
+  if (preferred) return preferred.url;
+
+  const acceptable = normalized.find(a => isWindowsName(a.name) && isAcceptableExt(a.name));
+  if (acceptable) return acceptable.url;
+
+  const fallbackPreferred = normalized.find(a => isPreferredExt(a.name));
+  if (fallbackPreferred) return fallbackPreferred.url;
+
+  const fallbackAcceptable = normalized.find(a => isAcceptableExt(a.name));
+  if (fallbackAcceptable) return fallbackAcceptable.url;
+
+  return null;
+}
+
+function getCachedLatestWindowsAssetUrl() {
+  try {
+    const key = 'haotzar_latest_windows_asset_url';
+    const raw = sessionStorage.getItem(key);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed.url !== 'string' || typeof parsed.ts !== 'number') return null;
+    if (Date.now() - parsed.ts > 6 * 60 * 60 * 1000) return null;
+    return parsed.url;
+  } catch {
+    return null;
+  }
+}
+
+function cacheLatestWindowsAssetUrl(url) {
+  try {
+    const key = 'haotzar_latest_windows_asset_url';
+    sessionStorage.setItem(key, JSON.stringify({ url, ts: Date.now() }));
+  } catch {
+  }
 }
 
 // Image Carousel for Hero Section
