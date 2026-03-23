@@ -34,7 +34,7 @@ php -S localhost:8000
 
 ואז פתח `http://localhost:3000` (או `http://localhost:8000`) בדפדפן.
 
-## 📁 מבנה הפרויקט
+## 📁 מבנה האתר
 
 ```
 haotzar-site/
