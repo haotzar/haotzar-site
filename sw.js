@@ -1,18 +1,18 @@
 // Service Worker for HaOtzar Site
 const CACHE_NAME = 'haotzar-v1';
 const urlsToCache = [
-  '/haotzar-site/',
-  '/haotzar-site/index.html',
-  '/haotzar-site/manifest.json',
-  '/haotzar-site/assets/style.css',
-  '/haotzar-site/assets/index.js',
-  '/haotzar-site/assets/i18n.js',
-  '/haotzar-site/assets/icon.png',
-  '/haotzar-site/assets/fonts/DrugulinCLM-Bold.otf',
-  '/haotzar-site/art/app-screenshot.PNG',
-  '/haotzar-site/art/app-screenshot-2.PNG',
-  '/haotzar-site/art/app-screenshot-3.PNG',
-  '/haotzar-site/art/home-background.png'
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/assets/style.css',
+  '/assets/index.js',
+  '/assets/i18n.js',
+  '/assets/icon.png',
+  '/assets/fonts/DrugulinCLM-Bold.otf',
+  '/art/app-screenshot.PNG',
+  '/art/app-screenshot-2.PNG',
+  '/art/app-screenshot-3.PNG',
+  '/art/home-background.png'
 ];
 
 // Install event - cache resources
