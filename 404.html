@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>404 - הדף לא נמצא | האוצר</title>
+    <meta name="title" content="404 - הדף לא נמצא | האוצר" />
+    <meta name="description" content="הדף שחיפשת לא נמצא. חזור לדף הבית של האוצר - הספרייה הדיגיטלית של ספרי קודש." />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#5c3d2e" />
+
+    <!-- Favicons & Icons -->
+    <link rel="icon" type="image/png" href="/assets/icon.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/icon.png" />
+    <link rel="shortcut icon" href="/assets/icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon.png" />
+
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts - Bona Nova & Fredoka -->
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Fluent UI Icons -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/dist/css/fabric.min.css" />
+
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <script src="/assets/i18n.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style.css">
+    
+    <style>
+      .error-404 {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+      }
+      
+      .error-404-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .error-404-code {
+        font-size: 8rem;
+        font-weight: 700;
+        color: var(--primary-color, #5c3d2e);
+        line-height: 1;
+        margin-bottom: 1rem;
+        font-family: 'Fredoka', sans-serif;
+      }
+      
+      .error-404-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary, #1a1a1a);
+      }
+      
+      .error-404-description {
+        font-size: 1.125rem;
+        color: var(--text-secondary, #666);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      
+      .error-404-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .error-404-icon {
+        font-size: 6rem;
+        margin-bottom: 1rem;
+        opacity: 0.3;
+      }
+      
+      @media (max-width: 768px) {
+        .error-404-code {
+          font-size: 5rem;
+        }
+        
+        .error-404-title {
+          font-size: 1.5rem;
+        }
+        
+        .error-404-description {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Header -->
+      <header class="header">
+        <nav class="navbar">
+          <div class="nav-container">
+            <div class="nav-logo">
+              <img src="/assets/icon.png" alt="לוגו האוצר" class="nav-logo-icon" />
+              <h1 tabindex="0" role="button" aria-label="חזרה לדף הבית" onclick="window.location.href='/'">האוצר</h1>
+            </div>
+            <ul class="nav-menu">
+              <li><a href="/#home" class="nav-link" data-i18n="nav.home">בית</a></li>
+              <li><a href="/#features" class="nav-link" data-i18n="nav.features">תכונות</a></li>
+              <li><a href="/#download" class="nav-link" data-i18n="nav.download">הורדה</a></li>
+              <li><a href="/#about" class="nav-link" data-i18n="nav.about">אודות</a></li>
+            </ul>
+            <div class="nav-actions">
+              <button class="theme-toggle" aria-label="Toggle theme" title="החלף מצב תצוגה">
+                <i class="ms-Icon ms-Icon--Sunny" aria-hidden="true"></i>
+              </button>
+              <button class="lang-toggle" aria-label="Toggle language" title="Switch language">
+                <i class="ms-Icon ms-Icon--LocaleLanguage" aria-hidden="true"></i>
+              </button>
+              <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="ms-Icon ms-Icon--GlobalNavButton" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Main Content - 404 Error -->
+      <main class="main">
+        <section class="error-404">
+          <div class="error-404-container">
+            <div class="error-404-icon">
+              <i class="ms-Icon ms-Icon--PageRemove" aria-hidden="true"></i>
+            </div>
+            <h1 class="error-404-code">404</h1>
+            <h2 class="error-404-title" data-i18n="error404.title">הדף לא נמצא</h2>
+            <p class="error-404-description" data-i18n="error404.description">
+              מצטערים, הדף שחיפשת לא קיים או הועבר למקום אחר.
+              אולי תרצה לחזור לדף הבית או לחפש משהו אחר?
+            </p>
+            <div class="error-404-actions">
+              <a href="/" class="btn btn-primary">
+                <i class="ms-Icon ms-Icon--Home"></i>
+                <span data-i18n="error404.backHome">חזרה לדף הבית</span>
+              </a>
+              <a href="/#download" class="btn btn-secondary">
+                <i class="ms-Icon ms-Icon--Download"></i>
+                <span data-i18n="error404.downloadApp">הורד את האפליקציה</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>האוצר</h3>
+              <p>הספרייה הדיגיטלית לספרי קודש.</p>
+            </div>
+            <div class="footer-section">
+              <h4 data-i18n="footer.product.title">מוצר</h4>
+              <ul>
+                <li><a href="/#features"><i class="ms-Icon ms-Icon--Lightbulb"></i> <span data-i18n="footer.product.features">תכונות</span></a></li>
+                <li><a href="/#download"><i class="ms-Icon ms-Icon--Download"></i> <span data-i18n="footer.product.download">הורדה</span></a></li>
+                <li><a href="/#about"><i class="ms-Icon ms-Icon--Info"></i> <span data-i18n="footer.product.about">אודות</span></a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4 data-i18n="footer.support.title">תמיכה</h4>
+              <ul>
+                <li><a href="https://forum.haoetz.com"><i class="ms-Icon ms-Icon--Documentation"></i> <span data-i18n="footer.support.docs">פורום האוצר</span></a></li>
+                <li><a href="#"><i class="ms-Icon ms-Icon--Unknown"></i> <span data-i18n="footer.support.help">מרכז עזרה</span></a></li>
+                <li><a href="#"><i class="ms-Icon ms-Icon--Mail"></i> <span data-i18n="footer.support.contact">צור קשר</span></a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4 data-i18n="footer.connect.title">התחבר</h4>
+              <ul>
+                <li><a href="https://mitmahmim.top"><i class="ms-Icon ms-Icon--People"></i> <span data-i18n="footer.connect.mitmahmim">מתמחים טופ</span></a></li>
+                <li><a href="#"><i class="ms-Icon ms-Icon--GitGraph"></i> <span data-i18n="footer.connect.github">GitHub</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2026 האוצר. כל הזכויות שמורות.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

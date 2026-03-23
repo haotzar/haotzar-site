@@ -1,0 +1,13 @@
+{
+  "name": "haotzar-app",
+  "version": "1.0.0",
+  "description": "האוצר - ספרייה דיגיטלית של ספרי קודש",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["library", "books", "hebrew", "torah"],
+  "author": "HaOtzar",
+  "license": "MIT"
+}
