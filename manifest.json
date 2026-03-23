@@ -2,60 +2,60 @@
   "name": "האוצר - ספרייה דיגיטלית של ספרי קודש",
   "short_name": "האוצר",
   "description": "מאגר דיגיטלי ענק של ספרי קודש. ספרייה חינמית לגישה מהירה למאות אלפי ספרים, טקסטים ומקורות תורניים.",
-  "start_url": "/",
+  "start_url": "/haotzar-site/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#5c3d2e",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "/haotzar-site/",
   "lang": "he",
   "dir": "rtl",
   "categories": ["education", "books", "reference"],
   "icons": [
     {
-      "src": "/favicon-72x72.png",
+      "src": "/haotzar-site/favicon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-96x96.png",
+      "src": "/haotzar-site/favicon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-128x128.png",
+      "src": "/haotzar-site/favicon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-144x144.png",
+      "src": "/haotzar-site/favicon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-152x152.png",
+      "src": "/haotzar-site/favicon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-192x192.png",
+      "src": "/haotzar-site/favicon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-384x384.png",
+      "src": "/haotzar-site/favicon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon-512x512.png",
+      "src": "/haotzar-site/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
@@ -66,10 +66,10 @@
       "name": "Features",
       "short_name": "Features",
       "description": "View all features",
-      "url": "/#features",
+      "url": "/haotzar-site/#features",
       "icons": [
         {
-          "src": "/favicon-96x96.png",
+          "src": "/haotzar-site/favicon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -78,10 +78,10 @@
       "name": "Download",
       "short_name": "Download",
       "description": "Download the app",
-      "url": "/#download",
+      "url": "/haotzar-site/#download",
       "icons": [
         {
-          "src": "/favicon-96x96.png",
+          "src": "/haotzar-site/favicon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -89,14 +89,14 @@
   ],
   "screenshots": [
     {
-      "src": "/art/screenshot-desktop.png",
+      "src": "/haotzar-site/art/screenshot-desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Desktop view of MyApp"
     },
     {
-      "src": "/art/screenshot-mobile.png",
+      "src": "/haotzar-site/art/screenshot-mobile.png",
       "sizes": "375x667",
       "type": "image/png",
       "form_factor": "narrow",
@@ -114,11 +114,11 @@
   "protocol_handlers": [
     {
       "protocol": "web+myapp",
-      "url": "/handle-protocol?url=%s"
+      "url": "/haotzar-site/handle-protocol?url=%s"
     }
   ],
   "share_target": {
-    "action": "/share",
+    "action": "/haotzar-site/share",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
@@ -135,7 +135,7 @@
   },
   "file_handlers": [
     {
-      "action": "/open-file",
+      "action": "/haotzar-site/open-file",
       "accept": {
         "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp"],
         "document/*": [".pdf", ".doc", ".docx", ".txt"]
