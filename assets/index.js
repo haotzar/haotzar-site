@@ -694,9 +694,9 @@ function handleDownloadClick(platformConfig) {
 // Image Carousel for Hero Section
 function setupImageCarousel() {
   const images = [
-    '/art/app-screenshot.PNG',
-    '/art/app-screenshot-2.PNG',
-    '/art/app-screenshot-3.PNG'
+    './art/app-screenshot.PNG',
+    './art/app-screenshot-2.PNG',
+    './art/app-screenshot-3.PNG'
   ];
   
   let currentIndex = 0;
