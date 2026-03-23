@@ -214,7 +214,7 @@ function handleButtonClick(event, button) {
   
   switch(buttonText) {
     case 'התחל ללמוד':
-      showNotification('ברוך הבא להאוצר! מתחיל ללמוד...', 'success');
+      window.open('https://haotzar.netlify.app/', '_blank', 'noopener');
       break;
     case 'הורד עכשיו':
       document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
@@ -351,6 +351,7 @@ function setupHebrewCalendar() {
 
 // Notification System
 function showNotification(message, type = 'info') {
+  return;
   const notification = document.createElement('div');
   notification.className = `notification notification-${type}`;
   notification.textContent = message;
