@@ -63,9 +63,14 @@ haotzar-site/
 
 ## 🌐 פריסה (Deployment)
 
-### GitHub Pages
-1. דחוף את הקוד ל-GitHub
-2. ב-Settings → Pages בחר את ה-branch שלך
+### GitHub Pages (אוטומטי)
+1. דחוף את הקוד ל-branch `main` ב-GitHub
+2. הפריסה תתבצע אוטומטית באמצעות GitHub Actions
+3. האתר יהיה זמין בכתובת: `https://username.github.io/repository-name`
+
+### GitHub Pages (ידני)
+1. ב-Settings → Pages בחר את ה-branch שלך
+2. בחר תיקיית השורש (/) כמקור
 3. האתר יהיה זמין בכתובת: `https://username.github.io/repository-name`
 
 ### שירותי אחסון אחרים
