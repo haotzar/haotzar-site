@@ -14,6 +14,7 @@ function initializeApp() {
   setupImageCarousel();
   setupPlatformDetection();
   setupFAQ();
+  setupEmailPopup();
   console.log('האוצר initialized successfully');
 }
 
@@ -903,5 +904,112 @@ function setupFAQ() {
       // Toggle current item
       item.classList.toggle('active', !isActive);
     });
+  });
+}
+
+// Email Popup Setup
+function setupEmailPopup() {
+  const popup = document.getElementById('emailPopup');
+  const closeBtn = popup.querySelector('.email-popup-close');
+  const form = document.getElementById('emailPopupForm');
+  const successMessage = document.getElementById('emailPopupSuccess');
+  
+  // Check if user has already seen the popup
+  const hasSeenPopup = localStorage.getItem('hasSeenEmailPopup');
+  const hasSubscribed = localStorage.getItem('hasSubscribedEmail');
+  
+  // Show popup after 3 seconds if user hasn't seen it or subscribed
+  if (!hasSeenPopup && !hasSubscribed) {
+    setTimeout(() => {
+      popup.classList.add('show');
+      localStorage.setItem('hasSeenEmailPopup', 'true');
+    }, 3000);
+  }
+  
+  // Close popup when clicking close button
+  closeBtn.addEventListener('click', () => {
+    popup.classList.remove('show');
+  });
+  
+  // Close popup when clicking outside
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.classList.remove('show');
+    }
+  });
+  
+  // Close popup on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('show')) {
+      popup.classList.remove('show');
+    }
+  });
+  
+  // Handle form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const emailInput = form.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    
+    if (!email) {
+      showNotification('נא להזין כתובת מייל תקינה', 'warning');
+      return;
+    }
+    
+    // Disable submit button during submission
+    const submitBtn = form.querySelector('.email-popup-submit');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>שולח...</span>';
+    
+    try {
+      // Send to Formspree
+      const response = await fetch('https://formspree.io/f/xjgprovr', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email,
+          message: 'הרשמה לעדכונים על האוצר',
+          _subject: 'הרשמה חדשה לעדכונים - האוצר'
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        console.log('Email submitted successfully:', email);
+        
+        // Hide form and show success message
+        form.style.display = 'none';
+        successMessage.classList.add('show');
+        
+        // Mark as subscribed
+        localStorage.setItem('hasSubscribedEmail', 'true');
+        
+        // Close popup after 3 seconds
+        setTimeout(() => {
+          popup.classList.remove('show');
+          // Reset form for next time (if needed)
+          setTimeout(() => {
+            form.style.display = 'flex';
+            successMessage.classList.remove('show');
+            emailInput.value = '';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }, 300);
+        }, 3000);
+        
+        showNotification('תודה על ההרשמה! נשלח לך עדכון בקרוב', 'success');
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      showNotification('אירעה שגיאה בשליחה. נסה שוב מאוחר יותר', 'error');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
   });
 }

@@ -23,8 +23,14 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = '.' + req.url;
-  if (filePath === './') {
+  // Remove /haotzar-site/ prefix if it exists (for GitHub Pages compatibility)
+  let urlPath = req.url.replace(/^\/haotzar-site/, '');
+  
+  // Remove query parameters (like ?v=5)
+  urlPath = urlPath.split('?')[0];
+  
+  let filePath = '.' + urlPath;
+  if (filePath === './' || filePath === '.') {
     filePath = './index.html';
   }
 

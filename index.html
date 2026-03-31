@@ -409,6 +409,40 @@
         </section>
       </main>
 
+      <!-- Email Popup -->
+      <div class="email-popup-overlay" id="emailPopup">
+        <div class="email-popup">
+          <button class="email-popup-close" aria-label="סגור">
+            <i class="ms-Icon ms-Icon--Cancel"></i>
+          </button>
+          <div class="email-popup-content">
+            <div class="email-popup-icon">
+              <i class="ms-Icon ms-Icon--Mail"></i>
+            </div>
+            <h3 data-i18n="popup.title">קבל עדכונים על האוצר</h3>
+            <p data-i18n="popup.description">הירשם לרשימת התפוצה שלנו וקבל עדכון ישירות למייל כשהתוכנה תהיה זמינה</p>
+            <form class="email-popup-form" id="emailPopupForm">
+              <input 
+                type="email" 
+                class="email-popup-input" 
+                placeholder="הכנס את כתובת המייל שלך" 
+                data-i18n-placeholder="popup.emailPlaceholder"
+                required
+                dir="ltr"
+              />
+              <button type="submit" class="email-popup-submit">
+                <span data-i18n="popup.submit">שלח</span>
+              </button>
+            </form>
+          </div>
+          <div class="email-popup-success" id="emailPopupSuccess">
+            <i class="ms-Icon ms-Icon--CompletedSolid"></i>
+            <h3 data-i18n="popup.successTitle">תודה על ההרשמה!</h3>
+            <p data-i18n="popup.successMessage">נשלח לך עדכון ברגע שהתוכנה תהיה זמינה</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Footer -->
       <footer class="footer">
         <div class="container">

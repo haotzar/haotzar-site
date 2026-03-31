@@ -115,6 +115,14 @@ const translations = {
       },
       copyright: '© 2026 האוצר. כל הזכויות שמורות.'
     },
+    popup: {
+      title: 'קבל עדכונים על האוצר',
+      description: 'הירשם לרשימת התפוצה שלנו וקבל עדכון ישירות למייל כשהתוכנה תהיה זמינה',
+      emailPlaceholder: 'הכנס את כתובת המייל שלך',
+      submit: 'שלח',
+      successTitle: 'תודה על ההרשמה!',
+      successMessage: 'נשלח לך עדכון ברגע שהתוכנה תהיה זמינה'
+    },
     error404: {
       title: 'הדף לא נמצא',
       description: 'מצטערים, הדף שחיפשת לא קיים או הועבר למקום אחר. אולי תרצה לחזור לדף הבית או לחפש משהו אחר?',
@@ -236,6 +244,14 @@ const translations = {
         github: 'GitHub'
       },
       copyright: '© 2026 HaOtzar. All rights reserved.'
+    },
+    popup: {
+      title: 'Get Updates About HaOtzar',
+      description: 'Subscribe to our mailing list and receive an update directly to your email when the software is available',
+      emailPlaceholder: 'Enter your email address',
+      submit: 'Submit',
+      successTitle: 'Thank you for subscribing!',
+      successMessage: 'We will send you an update as soon as the software is available'
     },
     error404: {
       title: 'Page Not Found',
