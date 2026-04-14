@@ -18,19 +18,19 @@ const translations = {
       title: 'תכונות מתקדמות',
       item1: {
         title: 'מאגר ענק של ספרי קודש',
-        description: 'גישה מיידית למאות אלפי ספרים, טקסטים ומקורות תורניים מכל הזמנים, מסודרים ומקטלגים לגישה נוחה.'
+        description: 'מאגר ענק של ספרי קודש מבוסס על הספריות המובילות כמו hebrewbooks, אוצריא ועוד, תמיכה מלאה בהוספת ספרים בפורמט טקסט או PDF.'
       },
       item2: {
         title: 'חיפוש חכם ומהיר',
-        description: 'מנוע חיפוש מתקדם המאפשר למצוא כל ביטוי או מקור בשניות בודדות, עם סינון תוצאות חכם ומדויק.'
+        description: 'מנוע חיפוש מתקדם המאפשר למצוא כל ביטוי או מקור בשניות בודדות, עם סינון תוצאות חכם ומדויק, גמישות המאפשרת למצוא כל ביטוי ללא שגיאות מיותרות'
       },
       item3: {
         title: 'חוויית לימוד מותאמת',
         description: 'ממשק משתמש נקי ומרהיב המעניק חוויית קריאה נעימה, עם אפשרות להוספת הערות, סימניות וניהול רשימות ספרים.'
       },
       item4: {
-        title: 'זמינות בכל מקום',
-        description: 'האוצר זמין עבורך בכל המכשירים - מחשב, טאבלט ונייד, עם סנכרון מלא וגם במצב אופליין ללא אינטרנט.'
+        title: 'כלים ותכונות שימושיות',
+        description: 'לוח שנה , ממיר מידות , דף היומי ועוד המון תכונות שימושיות בגישה מהירה מתוך האפליקציה לנוחות מירבית.'
       }
     },
     download: {
@@ -140,19 +140,19 @@ const translations = {
       title: 'Advanced Features',
       item1: {
         title: 'Vast Library of Sacred Texts',
-        description: 'Instant access to hundreds of thousands of books, texts, and Torah sources from all eras, organized and cataloged for easy access.'
+        description: 'A vast library of sacred texts based on leading libraries like HebrewBooks, Otzaria and more, with full support for adding books in text or PDF format.'
       },
       item2: {
         title: 'Smart and Fast Search',
-        description: 'An advanced search engine that allows finding any phrase or source in seconds, with smart and accurate result filtering.'
+        description: 'An advanced search engine that allows finding any phrase or source in seconds, with smart and accurate result filtering, with flexibility to find any phrase without unnecessary typos.'
       },
       item3: {
         title: 'Tailored Learning Experience',
         description: 'A clean and stunning user interface that provides a pleasant reading experience, with options for adding notes, bookmarks, and book list management.'
       },
       item4: {
-        title: 'Available Anywhere',
-        description: 'HaOtzar is available on all your devices - desktop, tablet, and mobile, with full synchronization and offline mode without internet.'
+        title: 'Useful Tools and Features',
+        description: 'Calendar, unit converter, Daf Yomi and many more useful features with quick access from within the application for maximum convenience.'
       }
     },
     download: {
