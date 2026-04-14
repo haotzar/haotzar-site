@@ -49,7 +49,7 @@ const translations = {
     about: {
       title: 'אודות האוצר',
       paragraph1: 'האוצר הוא ספרייה דיגיטלית מתקדמת שנועדה להנגיש את אוצרות התורה לכל אדם. אנו מאמינים ביצירת כלים חזקים אך פשוטים לשימוש, המאפשרים לך להתמקד במה שחשוב באמת - הלימוד.',
-      paragraph2: 'נבנה עם טכנולוגיות ווב מתקדמות, האוצר מספק ביצועים יוצאי דופן וחוויית משתמש חלקה בכל המכשירים. בין אם אתה תלמיד, רב, או חוקר, האוצר מתאים את עצמו לצרכים שלך.',
+      paragraph2: 'נבנה עם טכנולוגיות ווב מתקדמות, האוצר מספק ביצועים יוצאי דופן וחוויית משתמש חלקה בכל המכשירים. בין אם אתה תלמיד, רב, או מגיד שיעור, האוצר מתאים את עצמו לצרכים שלך.',
       stats: {
         users: 'משתמשים פעילים',
         rating: 'דירוג משתמשים',
@@ -171,7 +171,7 @@ const translations = {
     about: {
       title: 'About HaOtzar',
       paragraph1: 'HaOtzar is an advanced digital library designed to make Torah treasures accessible to everyone. We believe in creating powerful yet simple tools that allow you to focus on what really matters - learning.',
-      paragraph2: 'Built with advanced web technologies, HaOtzar provides exceptional performance and smooth user experience on all devices. Whether you are a student, rabbi, or researcher, HaOtzar adapts to your needs.',
+      paragraph2: 'Built with advanced web technologies, HaOtzar provides exceptional performance and smooth user experience on all devices. Whether you are a student, rabbi, or lecturer, HaOtzar adapts to your needs.',
       stats: {
         users: 'Active Users',
         rating: 'User Rating',
