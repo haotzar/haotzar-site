@@ -1041,3 +1041,130 @@ function setupEmailPopup() {
     }
   });
 }
+
+// Contact Form Validation and Submission
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Show contact popup with message
+function showContactPopup(type, title, message) {
+  const popup = document.getElementById('contactPopup');
+  const iconDiv = document.getElementById('contactPopupIcon');
+  const titleEl = document.getElementById('contactPopupTitle');
+  const messageEl = document.getElementById('contactPopupMessage');
+  
+  // Set icon based on type
+  if (type === 'success') {
+    iconDiv.className = 'contact-popup-icon success';
+    iconDiv.innerHTML = '<i class="ms-Icon ms-Icon--CompletedSolid"></i>';
+  } else {
+    iconDiv.className = 'contact-popup-icon error';
+    iconDiv.innerHTML = '<i class="ms-Icon ms-Icon--Error"></i>';
+  }
+  
+  // Set content
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+  
+  // Show popup
+  popup.classList.add('show');
+}
+
+// Close contact popup
+function closeContactPopup() {
+  const popup = document.getElementById('contactPopup');
+  popup.classList.remove('show');
+}
+
+// Make functions globally available for inline onclick
+window.closeContactPopup = closeContactPopup;
+window.showContactPopup = showContactPopup;
+
+// Initialize contact form when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+  
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const name = contactForm.querySelector('input[name="name"]').value.trim();
+    const email = contactForm.querySelector('input[name="email"]').value.trim();
+    const subject = contactForm.querySelector('input[name="subject"]').value.trim();
+    const message = contactForm.querySelector('textarea[name="message"]').value.trim();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    
+    // Validation checks with popup
+    if (!name) {
+      showContactPopup('error', 'שם חסר', 'נא להזין שם מלא');
+      return;
+    }
+    
+    if (!email) {
+      showContactPopup('error', 'אימייל חסר', 'נא להזין כתובת אימייל');
+      return;
+    }
+    
+    if (!validateEmail(email)) {
+      showContactPopup('error', 'אימייל לא תקין', 'נא להזין כתובת אימייל תקינה (לדוגמה: name@example.com)');
+      return;
+    }
+    
+    if (!subject) {
+      showContactPopup('error', 'נושא חסר', 'נא להזין נושא להודעה');
+      return;
+    }
+    
+    if (!message) {
+      showContactPopup('error', 'תוכן חסר', 'נא להזין תוכן הודעה');
+      return;
+    }
+    
+    if (message.length < 10) {
+      showContactPopup('error', 'תוכן קצר מדי', 'תוכן ההודעה חייב להכיל לפחות 10 תווים');
+      return;
+    }
+    
+    // Disable submit button during submission
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'שולח...';
+    
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          _subject: `הודעה חדשה מאת ${name}: ${subject}`
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        showContactPopup('success', 'הודעה נשלחה!', 'ההודעה נשלחה בהצלחה. נחזור אליך בהקדם.');
+        contactForm.reset();
+      } else {
+        const errorData = await response.json().catch(() => null);
+        if (errorData && errorData.error) {
+          showContactPopup('error', 'שגיאה בשליחה', `שגיאה: ${errorData.error}`);
+        } else {
+          showContactPopup('error', 'שגיאה בשליחה', 'אירעה שגיאה בשליחת ההודעה. נסה שוב מאוחר יותר.');
+        }
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      showContactPopup('error', 'שגיאת תקשורת', 'אירעה שגיאה בתקשורת עם השרת. בדוק את החיבור לאינטרנט ונסה שוב.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+});
