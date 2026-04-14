@@ -138,7 +138,7 @@ function setupAnimations() {
   }, observerOptions);
 
   // Observe elements for animation
-  const animateElements = document.querySelectorAll('.feature-card, .stat, .section-title, .section-description, .about-text p, .faq-item');
+  const animateElements = document.querySelectorAll('.feature-row, .stat, .section-title, .section-description, .about-text p, .faq-item');
   animateElements.forEach(el => observer.observe(el));
 
   // Add CSS for animations
@@ -149,12 +149,12 @@ function setupAnimations() {
 function addAnimationStyles() {
   const style = document.createElement('style');
   style.textContent = `
-    .feature-card,
+    .feature-row,
     .stat,
     .faq-item {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     
     .animate-in {
@@ -551,42 +551,42 @@ function updateDownloadButtons(platform) {
   const platforms = {
     windows: {
       id: 'windows',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/windows.svg',
+      icon: 'https://img.icons8.com/color/96/windows-11.png', // High-quality 3D/Color Windows 11 icon
       text: 'download.windows',
       textFallback: 'הורד לווינדוס',
       url: '#download-windows'
     },
     android: {
       id: 'android',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/android.svg',
+      icon: 'https://img.icons8.com/color/96/android-os.png', // High-quality Color Android icon
       text: 'download.android',
       textFallback: 'הורד לאנדרואיד',
       url: '#download-android'
     },
     ios: {
       id: 'ios',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg',
+      icon: 'https://img.icons8.com/color/96/apple-app-store--v1.png', // App Store icon for iOS
       text: 'download.ios',
       textFallback: 'הורד ל-iOS',
       url: '#download-ios'
     },
     mac: {
       id: 'mac',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apple.svg',
+      icon: 'https://img.icons8.com/color/96/mac-os--v1.png', // Mac OS icon
       text: 'download.mac',
       textFallback: 'הורד ל-Mac',
       url: '#download-mac'
     },
     linux: {
       id: 'linux',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linux.svg',
+      icon: 'https://img.icons8.com/color/96/linux.png', // High-quality Linux penguin icon
       text: 'download.linux',
       textFallback: 'הורד ל-Linux',
       url: '#download-linux'
     },
     web: {
       id: 'web',
-      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlechrome.svg',
+      icon: 'https://img.icons8.com/color/96/chrome--v1.png', // Color Chrome/Web icon
       text: 'download.web',
       textFallback: 'לאתר האוצר',
       url: 'https://www.haoetz.com'
@@ -595,8 +595,26 @@ function updateDownloadButtons(platform) {
   
   const currentPlatform = platforms[platform] || platforms.web;
   
+  // Clear existing buttons
+  downloadButtons.innerHTML = '';
+  
+  // Create wrapper for recommended button
+  const wrapper = document.createElement('div');
+  wrapper.className = 'download-btn-wrapper recommended-wrapper';
+  wrapper.style.position = 'relative';
+  wrapper.style.display = 'inline-block';
+  
+  const badge = document.createElement('span');
+  badge.className = 'recommended-badge';
+  badge.textContent = 'מומלץ';
+  badge.setAttribute('data-i18n', 'download.recommended');
+  
   // Create primary download button (detected platform)
   const primaryButton = createDownloadButton(currentPlatform, true);
+  primaryButton.classList.add('recommended');
+  
+  wrapper.appendChild(badge);
+  wrapper.appendChild(primaryButton);
   
   // Create "show other platforms" button
   const otherPlatformsButton = document.createElement('button');
@@ -606,11 +624,8 @@ function updateDownloadButtons(platform) {
     <span data-i18n="download.otherPlatforms">פלטפורמות אחרות</span>
   `;
   
-  // Clear existing buttons
-  downloadButtons.innerHTML = '';
-  
   // Add buttons
-  downloadButtons.appendChild(primaryButton);
+  downloadButtons.appendChild(wrapper);
   downloadButtons.appendChild(otherPlatformsButton);
   
   console.log('Download buttons updated successfully');
@@ -671,16 +686,29 @@ function showAllPlatforms(container, currentPlatform, platforms) {
   
   // Add all platform buttons
   Object.entries(platforms).forEach(([key, config]) => {
-    const button = createDownloadButton(config, key === currentPlatform);
-    if (key === currentPlatform) {
-      button.classList.add('recommended');
+    const isRecommended = key === currentPlatform;
+    
+    if (isRecommended) {
+      // Create a wrapper for recommended button to handle the badge outside the overflow:hidden button
+      const wrapper = document.createElement('div');
+      wrapper.className = 'download-btn-wrapper recommended-wrapper';
+      wrapper.style.position = 'relative';
+      
       const badge = document.createElement('span');
       badge.className = 'recommended-badge';
       badge.textContent = 'מומלץ';
       badge.setAttribute('data-i18n', 'download.recommended');
-      button.appendChild(badge);
+      
+      const button = createDownloadButton(config, true);
+      button.classList.add('recommended');
+      
+      wrapper.appendChild(badge);
+      wrapper.appendChild(button);
+      grid.appendChild(wrapper);
+    } else {
+      const button = createDownloadButton(config, false);
+      grid.appendChild(button);
     }
-    grid.appendChild(button);
   });
   
   container.appendChild(grid);

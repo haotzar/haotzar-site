@@ -16,29 +16,21 @@ const translations = {
     },
     features: {
       title: 'תכונות מתקדמות',
-      library: {
-        title: 'מאגר ענק',
-        description: 'תמיכה בכל המאגרים: מאגר האוצר, אוצריא והיברובוקס וספרים מהמחשב האישי שלך.'
+      item1: {
+        title: 'מאגר ענק של ספרי קודש',
+        description: 'גישה מיידית למאות אלפי ספרים, טקסטים ומקורות תורניים מכל הזמנים, מסודרים ומקטלגים לגישה נוחה.'
       },
-      search: {
-        title: 'חיפוש חכם',
-        description: 'חיפוש מהיר ומדויק בכל הספרים עם תוצאות רלוונטיות.'
+      item2: {
+        title: 'חיפוש חכם ומהיר',
+        description: 'מנוע חיפוש מתקדם המאפשר למצוא כל ביטוי או מקור בשניות בודדות, עם סינון תוצאות חכם ומדויק.'
       },
-      times: {
-        title: 'זמני היום',
-        description: 'זמני היום, פרשת השבוע ודף היומי מעודכנים.'
+      item3: {
+        title: 'חוויית לימוד מותאמת',
+        description: 'ממשק משתמש נקי ומרהיב המעניק חוויית קריאה נעימה, עם אפשרות להוספת הערות, סימניות וניהול רשימות ספרים.'
       },
-      responsive: {
-        title: 'תומך בכל מכשיר',
-        description: 'עובד בצורה מושלמת במחשב, טאבלט ונייד.'
-      },
-      design: {
-        title: 'ממשק מרהיב',
-        description: 'ממשק נקי ואלגנטי בסגנון תורני.'
-      },
-      usability: {
-        title: 'קל לשימוש',
-        description: 'ממשק אינטואיטיבי שהופך את הלימוד לפשוט ונעים.'
+      item4: {
+        title: 'זמינות בכל מקום',
+        description: 'האוצר זמין עבורך בכל המכשירים - מחשב, טאבלט ונייד, עם סנכרון מלא וגם במצב אופליין ללא אינטרנט.'
       }
     },
     download: {
@@ -146,29 +138,21 @@ const translations = {
     },
     features: {
       title: 'Advanced Features',
-      library: {
-        title: 'Vast Library',
-        description: 'Support for all libraries: HaOtzar, Otzaria and HebrewBooks, plus books from your personal computer.'
+      item1: {
+        title: 'Vast Library of Sacred Texts',
+        description: 'Instant access to hundreds of thousands of books, texts, and Torah sources from all eras, organized and cataloged for easy access.'
       },
-      search: {
-        title: 'Smart Search',
-        description: 'Fast and accurate search across all books with relevant results.'
+      item2: {
+        title: 'Smart and Fast Search',
+        description: 'An advanced search engine that allows finding any phrase or source in seconds, with smart and accurate result filtering.'
       },
-      times: {
-        title: 'Daily Times',
-        description: 'Updated daily times, weekly portion and daily page.'
+      item3: {
+        title: 'Tailored Learning Experience',
+        description: 'A clean and stunning user interface that provides a pleasant reading experience, with options for adding notes, bookmarks, and book list management.'
       },
-      responsive: {
-        title: 'All Devices',
-        description: 'Works perfectly on desktop, tablet and mobile.'
-      },
-      design: {
-        title: 'Stunning Interface',
-        description: 'Clean and elegant interface in Torah style.'
-      },
-      usability: {
-        title: 'Easy to Use',
-        description: 'Intuitive interface that makes learning simple and pleasant.'
+      item4: {
+        title: 'Available Anywhere',
+        description: 'HaOtzar is available on all your devices - desktop, tablet, and mobile, with full synchronization and offline mode without internet.'
       }
     },
     download: {
