@@ -15,6 +15,8 @@ function initializeApp() {
   setupPlatformDetection();
   setupFAQ();
   setupEmailPopup();
+  setupHebrewCalendar();
+  setupSearchPreview();
   console.log('האוצר initialized successfully');
 }
 
@@ -202,6 +204,78 @@ function setupFormHandlers() {
         });
       }
     });
+  });
+}
+
+// Search Preview Logic
+function setupSearchPreview() {
+  const searchInput = document.querySelector('.search-preview-input');
+  const resultsPreview = document.getElementById('searchResultsPreview');
+
+  if (!searchInput || !resultsPreview) return;
+
+  const mockBooks = [
+    { title: 'רמב"ם משנה תורה', category: 'הלכה' },
+    { title: 'גמרא בבלי', category: 'תלמוד' },
+    { title: 'שולחן ערוך', category: 'הלכה' },
+    { title: 'זוהר הקדוש', category: 'קבלה' },
+    { title: 'מורה נבוכים', category: 'מחשבה' },
+    { title: 'קיצור שולחן ערוך', category: 'הלכה' },
+    { title: 'מסילת ישרים', category: 'מוסר' },
+    { title: 'ספר הכוזרי', category: 'מחשבה' },
+    { title: 'תנ"ך עם פירוש רש"י', category: 'תנ"ך' },
+    { title: 'ליקוטי מוהר"ן', category: 'חסידות' }
+  ];
+
+  searchInput.addEventListener('input', (e) => {
+    const value = e.target.value.trim();
+    if (value.length < 2) {
+      resultsPreview.classList.remove('active');
+      resultsPreview.innerHTML = '';
+      return;
+    }
+
+    const filtered = mockBooks.filter(book =>
+      book.title.includes(value) || book.category.includes(value)
+    ).slice(0, 5);
+
+    resultsPreview.innerHTML = '';
+    if (filtered.length > 0) {
+      filtered.forEach(book => {
+        const item = document.createElement('div');
+        item.className = 'search-result-item';
+
+        const icon = document.createElement('i');
+        icon.className = 'ms-Icon ms-Icon--BookAnswers';
+
+        const title = document.createElement('span');
+        title.className = 'result-title';
+        title.textContent = book.title;
+
+        const category = document.createElement('span');
+        category.className = 'result-category';
+        category.textContent = book.category;
+
+        item.appendChild(icon);
+        item.appendChild(title);
+        item.appendChild(category);
+        resultsPreview.appendChild(item);
+      });
+      resultsPreview.classList.add('active');
+    } else {
+      const noResults = document.createElement('div');
+      noResults.className = 'search-result-no-results';
+      noResults.textContent = `לא נמצאו תוצאות ל"${value}"`;
+      resultsPreview.appendChild(noResults);
+      resultsPreview.classList.add('active');
+    }
+  });
+
+  // Close results on click outside
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !resultsPreview.contains(e.target)) {
+      resultsPreview.classList.remove('active');
+    }
   });
 }
 

@@ -75,7 +75,7 @@ class HebrewCalendar {
     return {
       masechta: this.dafYomiMasechtot[currentMasechta],
       daf: currentDaf,
-      formatted: `דף היומי: ${this.dafYomiMasechtot[currentMasechta} דף ${currentDaf}`
+      formatted: `דף היומי: ${this.dafYomiMasechtot[currentMasechta]} דף ${currentDaf}`
     };
   }
 
@@ -100,7 +100,7 @@ class HebrewCalendar {
   // Simple Hebrew date conversion (simplified)
   toHebrewDate(date) {
     // This is a simplified version - in real implementation you'd use a proper Hebrew calendar library
-    const year = date.getFullYear() - 3760; // Approximate conversion
+    const year = date.getFullYear() + 3760; // Approximate conversion
     const month = date.getMonth() + 1;
     const day = date.getDate();
     
@@ -146,11 +146,15 @@ class HebrewCalendar {
 }
 
 // Initialize and expose the calendar
-const hebrewCalendar = new HebrewCalendar();
+const hebrewCalendarInstance = new HebrewCalendar();
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = hebrewCalendar;
+  module.exports = {
+    HebrewCalendar: HebrewCalendar,
+    hebrewCalendar: hebrewCalendarInstance
+  };
 } else {
-  window.HebrewCalendar = hebrewCalendar;
+  window.HebrewCalendar = HebrewCalendar;
+  window.hebrewCalendar = hebrewCalendarInstance;
 }
