@@ -726,8 +726,15 @@ function handleDownloadClick(platformConfig) {
   console.log('Download initiated for:', platformConfig);
 
   const platformId = platformConfig.id;
+  
+  if (platformId === 'web') {
+    window.open(platformConfig.url, '_blank', 'noopener');
+    showNotification(`נפתח קישור עבור ${platform}`, 'success');
+    return;
+  }
+
   if (platformId === 'windows') {
-    downloadLatestWindowsFromGitHub().catch(err => {
+    downloadLatestFromGitHub('windows').catch(err => {
       console.error('Windows download failed:', err);
       showNotification('לא הצלחנו להתחיל את ההורדה. פותח דף ריליסים...', 'warning');
       window.open('https://github.com/haotzar/haotzar/releases', '_blank', 'noopener');
@@ -735,9 +742,21 @@ function handleDownloadClick(platformConfig) {
     return;
   }
 
-  if (platformId === 'web') {
-    window.open(platformConfig.url, '_blank', 'noopener');
-    showNotification(`נפתח קישור עבור ${platform}`, 'success');
+  if (platformId === 'mac') {
+    downloadLatestFromGitHub('mac').catch(err => {
+      console.error('Mac download failed:', err);
+      showNotification('לא הצלחנו להתחיל את ההורדה. פותח דף ריליסים...', 'warning');
+      window.open('https://github.com/haotzar/haotzar/releases', '_blank', 'noopener');
+    });
+    return;
+  }
+
+  if (platformId === 'linux') {
+    downloadLatestFromGitHub('linux').catch(err => {
+      console.error('Linux download failed:', err);
+      showNotification('לא הצלחנו להתחיל את ההורדה. פותח דף ריליסים...', 'warning');
+      window.open('https://github.com/haotzar/haotzar/releases', '_blank', 'noopener');
+    });
     return;
   }
 
@@ -745,8 +764,8 @@ function handleDownloadClick(platformConfig) {
   showNotification(`פתחתי את דף הריליסים עבור ${platform}`, 'success');
 }
 
-async function downloadLatestWindowsFromGitHub() {
-  const cached = getCachedLatestWindowsAssetUrl();
+async function downloadLatestFromGitHub(platform) {
+  const cached = getCachedLatestAssetUrl(platform);
   if (cached) {
     window.location.assign(cached);
     showNotification('ההורדה החלה...', 'success');
@@ -766,47 +785,85 @@ async function downloadLatestWindowsFromGitHub() {
 
   const release = await response.json();
   const assets = Array.isArray(release.assets) ? release.assets : [];
-  const url = pickWindowsAssetUrlFromReleaseAssets(assets);
+  const url = pickAssetUrlFromReleaseAssets(assets, platform);
   if (!url) {
-    throw new Error('No matching Windows asset found in latest release');
+    throw new Error(`No matching ${platform} asset found in latest release`);
   }
 
-  cacheLatestWindowsAssetUrl(url);
+  cacheLatestAssetUrl(platform, url);
   window.location.assign(url);
   showNotification('ההורדה החלה...', 'success');
 }
 
-function pickWindowsAssetUrlFromReleaseAssets(assets) {
+function pickAssetUrlFromReleaseAssets(assets, platform) {
   const normalized = assets
     .filter(a => a && typeof a.name === 'string' && typeof a.browser_download_url === 'string')
     .map(a => ({ name: a.name, url: a.browser_download_url }));
 
-  const isHaotzarX64Setup = (name) => /^haotzar[-_].*_x64-setup\.exe$/i.test(name);
-  const isWindowsName = (name) => /windows|win32|win64|win-x64|win-x86/i.test(name);
-  const isPreferredExt = (name) => /\.(msi|exe)$/i.test(name);
-  const isAcceptableExt = (name) => /\.(msi|exe|zip)$/i.test(name);
+  if (platform === 'windows') {
+    const isHaotzarX64Setup = (name) => /^haotzar[-_].*_x64-setup\.exe$/i.test(name);
+    const isWindowsName = (name) => /windows|win32|win64|win-x64|win-x86/i.test(name);
+    const isPreferredExt = (name) => /\.(msi|exe)$/i.test(name);
+    const isAcceptableExt = (name) => /\.(msi|exe|zip)$/i.test(name);
 
-  const exact = normalized.find(a => isHaotzarX64Setup(a.name));
-  if (exact) return exact.url;
+    const exact = normalized.find(a => isHaotzarX64Setup(a.name));
+    if (exact) return exact.url;
 
-  const preferred = normalized.find(a => isWindowsName(a.name) && isPreferredExt(a.name));
-  if (preferred) return preferred.url;
+    const preferred = normalized.find(a => isWindowsName(a.name) && isPreferredExt(a.name));
+    if (preferred) return preferred.url;
 
-  const acceptable = normalized.find(a => isWindowsName(a.name) && isAcceptableExt(a.name));
-  if (acceptable) return acceptable.url;
+    const acceptable = normalized.find(a => isWindowsName(a.name) && isAcceptableExt(a.name));
+    if (acceptable) return acceptable.url;
 
-  const fallbackPreferred = normalized.find(a => isPreferredExt(a.name));
-  if (fallbackPreferred) return fallbackPreferred.url;
+    const fallbackPreferred = normalized.find(a => isPreferredExt(a.name));
+    if (fallbackPreferred) return fallbackPreferred.url;
 
-  const fallbackAcceptable = normalized.find(a => isAcceptableExt(a.name));
-  if (fallbackAcceptable) return fallbackAcceptable.url;
+    const fallbackAcceptable = normalized.find(a => isAcceptableExt(a.name));
+    if (fallbackAcceptable) return fallbackAcceptable.url;
+  }
+
+  if (platform === 'mac') {
+    const isMacName = (name) => /mac|darwin|osx|macos/i.test(name);
+    const isPreferredExt = (name) => /\.(dmg|pkg)$/i.test(name);
+    const isAcceptableExt = (name) => /\.(dmg|pkg|zip)$/i.test(name);
+
+    const preferred = normalized.find(a => isMacName(a.name) && isPreferredExt(a.name));
+    if (preferred) return preferred.url;
+
+    const acceptable = normalized.find(a => isMacName(a.name) && isAcceptableExt(a.name));
+    if (acceptable) return acceptable.url;
+
+    const fallbackPreferred = normalized.find(a => isPreferredExt(a.name));
+    if (fallbackPreferred) return fallbackPreferred.url;
+
+    const fallbackAcceptable = normalized.find(a => isAcceptableExt(a.name));
+    if (fallbackAcceptable) return fallbackAcceptable.url;
+  }
+
+  if (platform === 'linux') {
+    const isLinuxName = (name) => /linux|ubuntu|debian|fedora|appimage/i.test(name);
+    const isPreferredExt = (name) => /\.(appimage|deb|rpm)$/i.test(name);
+    const isAcceptableExt = (name) => /\.(appimage|deb|rpm|tar\.gz|zip)$/i.test(name);
+
+    const preferred = normalized.find(a => isLinuxName(a.name) && isPreferredExt(a.name));
+    if (preferred) return preferred.url;
+
+    const acceptable = normalized.find(a => isLinuxName(a.name) && isAcceptableExt(a.name));
+    if (acceptable) return acceptable.url;
+
+    const fallbackPreferred = normalized.find(a => isPreferredExt(a.name));
+    if (fallbackPreferred) return fallbackPreferred.url;
+
+    const fallbackAcceptable = normalized.find(a => isAcceptableExt(a.name));
+    if (fallbackAcceptable) return fallbackAcceptable.url;
+  }
 
   return null;
 }
 
-function getCachedLatestWindowsAssetUrl() {
+function getCachedLatestAssetUrl(platform) {
   try {
-    const key = 'haotzar_latest_windows_asset_url';
+    const key = `haotzar_latest_${platform}_asset_url`;
     const raw = sessionStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
@@ -818,9 +875,9 @@ function getCachedLatestWindowsAssetUrl() {
   }
 }
 
-function cacheLatestWindowsAssetUrl(url) {
+function cacheLatestAssetUrl(platform, url) {
   try {
-    const key = 'haotzar_latest_windows_asset_url';
+    const key = `haotzar_latest_${platform}_asset_url`;
     sessionStorage.setItem(key, JSON.stringify({ url, ts: Date.now() }));
   } catch {
   }
