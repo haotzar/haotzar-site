@@ -741,7 +741,7 @@ function handleDownloadClick(platformConfig) {
     return;
   }
 
-  window.open('https://github.com/haotzar/haotzar/releases/tag/v0.0.1', '_blank', 'noopener');
+  window.open('https://github.com/haotzar/haotzar/releases/latest', '_blank', 'noopener');
   showNotification(`פתחתי את דף הריליסים עבור ${platform}`, 'success');
 }
 
@@ -753,7 +753,7 @@ async function downloadLatestWindowsFromGitHub() {
     return;
   }
 
-  const apiUrl = 'https://api.github.com/repos/haotzar/haotzar/releases//tag/v0.0.1/latest';
+  const apiUrl = 'https://api.github.com/repos/haotzar/haotzar/releases/latest';
   const response = await fetch(apiUrl, {
     headers: {
       'Accept': 'application/vnd.github+json'
