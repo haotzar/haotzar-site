@@ -13,50 +13,8 @@
   "categories": ["education", "books", "reference"],
   "icons": [
     {
-      "src": "./favicon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "./favicon-512x512.png",
-      "sizes": "512x512",
+      "src": "/haotzar-site/assets/icon.png",
+      "sizes": "72x72 96x96 128x128 144x144 152x152 192x192 384x384 512x512",
       "type": "image/png",
       "purpose": "maskable any"
     }
@@ -66,10 +24,10 @@
       "name": "Features",
       "short_name": "Features",
       "description": "View all features",
-      "url": "/#features",
+      "url": "/haotzar-site/#features",
       "icons": [
         {
-          "src": "./favicon-96x96.png",
+          "src": "/haotzar-site/assets/icon.png",
           "sizes": "96x96"
         }
       ]
@@ -78,10 +36,10 @@
       "name": "Download",
       "short_name": "Download",
       "description": "Download the app",
-      "url": "/#download",
+      "url": "/haotzar-site/#download",
       "icons": [
         {
-          "src": "./favicon-96x96.png",
+          "src": "/haotzar-site/assets/icon.png",
           "sizes": "96x96"
         }
       ]
