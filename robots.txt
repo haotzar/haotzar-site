@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haotzar.github.io/haotzar-site/sitemap.xml
