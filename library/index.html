@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>ספרית האוצר - ספרייה דיגיטלית שיתופית לספרי קודש</title>
+    <meta name="description" content="ספרית האוצר - פרויקט קהילתי לבניית ספרייה דיגיטלית של ספרי קודש. הצטרף אלינו בהוספה, עריכה והגהה של ספרים תורניים." />
+    <meta name="keywords" content="ספרית האוצר, ספרייה דיגיטלית, ספרי קודש, הגהה, עריכה, פרויקט קהילתי, תורה, תלמוד, הלכה" />
+    <meta name="author" content="האוצר" />
+    <meta name="theme-color" content="#5c3d2e" />
+
+    <!-- Canonical & Language Alternates -->
+    <link rel="canonical" href="https://haotzar.github.io/haotzar-site/library/" />
+    <link rel="alternate" hreflang="he" href="https://haotzar.github.io/haotzar-site/library/" />
+    <link rel="alternate" hreflang="en" href="https://haotzar.github.io/haotzar-site/library/?lang=en" />
+
+    <!-- Favicons & Icons -->
+    <link rel="icon" href="../icon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="../favicon-192x192.png" />
+    <link rel="manifest" href="../manifest.json" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://haotzar.github.io/haotzar-site/library/" />
+    <meta property="og:title" content="ספרית האוצר - ספרייה דיגיטלית שיתופית" />
+    <meta property="og:description" content="הצטרף לפרויקט הקהילתי לבניית ספרייה דיגיטלית של ספרי קודש" />
+    <meta property="og:image" content="https://haotzar.github.io/haotzar-site/favicon-512x512.png" />
+
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Fluent UI Icons -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+
+    <link rel="stylesheet" crossorigin href="../assets/style.css?v=5">
+    <script type="module" crossorigin src="../assets/index.js?v=5"></script>
+    <script src="../assets/i18n.js?v=5"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Header -->
+      <header class="header">
+        <nav class="navbar">
+          <div class="nav-container">
+            <div class="nav-logo">
+              <img src="../assets/icon.png" alt="לוגו האוצר" class="nav-logo-icon" />
+              <h1 tabindex="0" role="button" aria-label="חזרה לדף הבית">ספרית האוצר</h1>
+            </div>
+            <ul class="nav-menu">
+              <li><a href="#home" class="nav-link active">בית</a></li>
+              <li><a href="#about" class="nav-link">אודות</a></li>
+              <li><a href="#contribute" class="nav-link">איך לתרום</a></li>
+              <li><a href="#contact" class="nav-link">צור קשר</a></li>
+              <li><a href="../" class="nav-link">לאתר הראשי</a></li>
+            </ul>
+            <div class="nav-actions">
+              <button class="theme-toggle" aria-label="Toggle theme" title="החלף מצב תצוגה">
+                <i class="ms-Icon ms-Icon--Sunny" aria-hidden="true"></i>
+              </button>
+              <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="ms-Icon ms-Icon--GlobalNavButton" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+          <div class="hero-container">
+            <div class="hero-content">
+              <h1 class="hero-main-title">ספרית האוצר</h1>
+              <h2 class="hero-title">בואו לבנות יחד ספרייה דיגיטלית של ספרי קודש</h2>
+              <p class="hero-description">
+                פרויקט קהילתי ייחודי שמזמין את הציבור להשתתף בבניית מאגר דיגיטלי של ספרי קודש.
+                הוסף ספרים חדשים, ערוך טקסטים קיימים, והגה כדי להבטיח דיוק מקסימלי.
+                יחד נבנה את הספרייה התורנית הגדולה והמדויקת ביותר.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="document.getElementById('contribute').scrollIntoView({ behavior: 'smooth' })">
+                  <span>התחל לתרום</span>
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">
+                  <span>למד עוד</span>
+                </button>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-image-placeholder">
+                <img src="../art/app-screenshot.PNG" alt="ספרית האוצר" class="hero-image active" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+          <div class="container">
+            <h2 class="section-title">אודות הפרויקט</h2>
+            <div class="about-content">
+              <div class="about-text">
+                <p>
+                  ספרית האוצר היא פרויקט קהילתי שיתופי שמטרתו לבנות את הספרייה הדיגיטלית המקיפה והמדויקת ביותר של ספרי קודש.
+                  אנו מאמינים בכוח הקהילה ובשיתוף פעולה כדי ליצור משאב תורני איכותי שיהיה זמין לכולם, בחינם.
+                </p>
+                <p>
+                  הפרויקט פתוח לכל מי שרוצה לתרום - בין אם יש לך ספרים נדירים לסרוק, כישורי הגהה ועריכה,
+                  או פשוט רצון לעזור בבניית משאב תורני חשוב. כל תרומה, קטנה כגדולה, עוזרת לנו להתקדם.
+                </p>
+              </div>
+              <div class="about-stats">
+                <div class="stat">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label">ספרים בתהליך</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">100+</div>
+                  <div class="stat-label">תורמים פעילים</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">24/7</div>
+                  <div class="stat-label">גישה חופשית</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contribute Section -->
+        <section id="contribute" class="features">
+          <div class="container">
+            <h2 class="section-title">איך אפשר לתרום?</h2>
+            
+            <!-- Contribution Method 1 -->
+            <div class="feature-row">
+              <div class="feature-image-container">
+                <img src="../art/app-screenshot.PNG" alt="הוספת ספרים">
+              </div>
+              <div class="feature-text-container">
+                <h3>הוספת ספרים חדשים</h3>
+                <p>יש לך ספרים נדירים או חשובים שעדיין לא נמצאים במאגר? סרוק אותם והעלה לספרייה. 
+                אנו מקבלים קבצי PDF, תמונות סרוקות, וקבצי טקסט. כל ספר שתוסיף יעזור לאלפי לומדים.</p>
+              </div>
+            </div>
+
+            <!-- Contribution Method 2 -->
+            <div class="feature-row reverse">
+              <div class="feature-image-container">
+                <img src="../art/serch.PNG" alt="עריכה והגהה">
+              </div>
+              <div class="feature-text-container">
+                <h3>עריכה והגהה של טקסטים</h3>
+                <p>עזור לנו לשפר את הדיוק של הטקסטים הקיימים. תקן שגיאות הקלדה, השלם חסרים, 
+                ווודא שהטקסט תואם למקור. הגהה איכותית היא המפתח לספרייה מדויקת ואמינה.</p>
+              </div>
+            </div>
+
+            <!-- Contribution Method 3 -->
+            <div class="feature-row">
+              <div class="feature-image-container">
+                <img src="../art/explorer.PNG" alt="תיוג וקטלוג">
+              </div>
+              <div class="feature-text-container">
+                <h3>תיוג וקטלוג ספרים</h3>
+                <p>עזור לנו לארגן את הספרייה על ידי הוספת מטא-דאטה לספרים: שם המחבר, שנת הוצאה, 
+                נושאים, מילות מפתח ועוד. ארגון טוב מקל על מציאת הספרים הנכונים.</p>
+              </div>
+            </div>
+
+            <!-- Contribution Method 4 -->
+            <div class="feature-row reverse">
+              <div class="feature-image-container">
+                <img src="../art/utils.png" alt="פיתוח וטכנולוגיה">
+              </div>
+              <div class="feature-text-container">
+                <h3>פיתוח וטכנולוגיה</h3>
+                <p>מפתחים ואנשי טכנולוגיה מוזמנים לתרום לפיתוח הפלטפורמה עצמה. 
+                שיפור ממשק המשתמש, הוספת תכונות חדשות, ופיתוח כלים לעריכה והגהה.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="download">
+          <div class="container">
+            <div class="download-panel">
+              <h2 class="section-title">צור קשר</h2>
+              <p class="section-description">
+                מעוניין להצטרף לפרויקט? יש לך שאלות או הצעות? נשמח לשמוע ממך!
+              </p>
+              <div class="hero-actions" style="justify-content: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="window.open('https://forum.haoetz.com', '_blank', 'noopener')">
+                  <span>פורום האוצר</span>
+                </button>
+                <button class="btn btn-secondary" onclick="window.open('https://github.com/haoetz', '_blank', 'noopener')">
+                  <span>GitHub</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <h3>ספרית האוצר</h3>
+              <p>פרויקט קהילתי לבניית ספרייה דיגיטלית של ספרי קודש</p>
+              <ul class="footer-links">
+                <li><a href="https://github.com/haotzar" target="_blank" rel="noopener"><svg class="github-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg> GitHub</a></li>
+                <li><a href="https://forum.haoetz.com" target="_blank" rel="noopener"><i class="ms-Icon ms-Icon--People"></i> פורום האוצר</a></li>
+                <li><a href="../" rel="noopener"><i class="ms-Icon ms-Icon--Home"></i> לאתר הראשי</a></li>
+              </ul>
+            </div>
+            <div class="footer-contact">
+              <h4>צור קשר</h4>
+              <form action="https://formspree.io/f/mnjlnayv" method="POST" class="contact-form" id="contactForm">
+                <div class="form-row">
+                  <input type="text" name="name" placeholder="שם מלא" required>
+                  <input type="email" name="email" placeholder="אימייל" required>
+                </div>
+                <input type="text" name="subject" placeholder="נושא" required>
+                <textarea name="message" placeholder="תוכן ההודעה" rows="4" required></textarea>
+                <button type="submit">שליחה</button>
+              </form>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 ספרית האוצר. כל הזכויות שמורות.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
